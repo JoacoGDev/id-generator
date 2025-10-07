@@ -339,7 +339,7 @@ Give a star if this project helped you learn about design patterns!
 
 ## Changelog
 
-### [2.0.0] - 2024-10-07
+### [2.0.0] - 2025-10-07
 #### Added
 - Persistent storage using Java Properties
 - Multiple independent counters with prefix support
@@ -360,7 +360,7 @@ Give a star if this project helped you learn about design patterns!
 - Full backward compatibility with V1.0
 - All V1.0 methods work identically
 
-### [1.0.0] - 2024-10-01
+### [1.0.0] - 2025-10-01
 - Initial release
 - Basic ID generation functionality
 - Singleton pattern implementation
