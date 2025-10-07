@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
- * Test class for IGenerator.
+ * Test class for IdGenerator.
  */
 class IdGeneratorTest {
 
