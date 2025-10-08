@@ -26,6 +26,17 @@ public class PersistenceManager {
                 File.separator + "counters.properties";
     }
 
+
+    /**
+     * Package-private constructor for testing purposes.
+     * Allows specifying a custom file path.
+     *
+     * @param customFilePath
+     */
+    PersistenceManager(String customFilePath) {
+        this.filePath = customFilePath;
+    }
+
     /**
      * Checks if the persistence file exists
      *
@@ -41,12 +52,18 @@ public class PersistenceManager {
      *
      * @throws IOException if directory cannot be created
      */
+    /**
+     * Creates the directory for the file if it doesn't exist.
+     * @throws IOException if directory cannot be created
+     */
     private void ensureDirectoryExists() throws IOException {
-        File directory = new File(System.getProperty("user.home") +
-                File.separator + ".idgenerator");
+        File file = new File(filePath);
+        File directory = file.getParentFile();  // Obtener directorio del filePath
 
-        if (!directory.exists()) {
-            throw new IOException("Could not create directory: " + directory);
+        if (directory != null && !directory.exists()) {
+            if (!directory.mkdirs()) {
+                throw new IOException("Could not create directory: " + directory);
+            }
         }
     }
 
