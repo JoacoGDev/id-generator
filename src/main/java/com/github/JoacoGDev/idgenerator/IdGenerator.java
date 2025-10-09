@@ -87,6 +87,15 @@ public final class IdGenerator {
         return currentValue;
     }
 
+    /**
+     * Generates and returns a formatted ID with the specified prefix.
+     * Format: PREFIX_XXXX (4 digits with zero-padding)
+     *
+     * @param prefix the prefix for the ID (e.g., "USER", "ORDER")
+     * @return formatted ID string (e.g., "USER_0001")
+     * @throws IllegalArgumentException if prefix is null or empty
+     */
+
     public synchronized String nextId(String prefix) {
 
         if (prefix == null || prefix.isBlank()) {
@@ -135,14 +144,34 @@ public final class IdGenerator {
         saveState();
     }
 
+    /**
+     * Resets a specific counter to its initial state.
+     * The next call to nextId(prefix) will return PREFIX_0000.
+     *
+     * @param prefix the prefix to reset
+     */
     public synchronized void reset(String prefix){
         counters.put(prefix, -1);
         saveState();
     }
 
+    /**
+     * Clears all counters and sets default to itd initial state.
+     * The next call to nextId(prefix) will return PREFIX_0000.
+     */
     public synchronized void resetAll(){
         counters.clear();
         counters.put(DEFAULT_PREFIX, -1);
         saveState();
+    }
+
+    /**
+     * Resets the singleton instance for testing purposes.
+     * Package-private - only accessible within the same package (tests).
+     * DO NOT USE IN PRODUCTION CODE.
+     */
+    static void resetInstanceForTesting() {
+        instance = null;
+
     }
 }

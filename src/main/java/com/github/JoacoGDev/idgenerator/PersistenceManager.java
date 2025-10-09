@@ -98,7 +98,13 @@ public class PersistenceManager {
         return counters;
     }
 
-
+    /**
+     * Saves counters to the properties file.
+     * Creates directory if it doesn't exist.
+     *
+     * @param counters Map of counter names to their values
+     * @throws IOException if file cannot be written
+     */
     public void save(Map<String, Integer> counters) throws IOException {
 
         ensureDirectoryExists();
